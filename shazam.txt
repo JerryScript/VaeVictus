@@ -1,0 +1,36 @@
+Shazam module is at arch/arm/mach-msm/shazam.ko
+
+You gotta write a script for this to be able to work with your rom. Maybe like put the script in /system/xbin/ then
+the user types shazam and it'll execute the script, load the module and viola! OC to 2.5 GHz!!!
+
+(First time only)
+Code:
+adb push shazam.ko /data/local
+Code:
+adb shell
+su
+mount -o rw,remount /dev/block/platform/msm_sdcc.1/by-name/system /system
+mv /system/etc/thermald.conf /system/etc/thermald.conf.bak
+reboot
+
+Load the overclock (every time you reboot):
+1. Load the kernel module (replace pll_l_val and vdd_uv with your desired voltages and L value as explained above. It defaults to 67 and 1300000 if you don't give it any parameters):
+Code:
+adb shell
+su
+insmod /data/local/krait_oc.ko pll_l_val=67 vdd_uv=1508000
+2. Bring core 1 temporarily offline so it gets updated with the new max frequency:
+Code:
+echo 0 > /sys/devices/system/cpu/cpu1/online
+3. You'll now have an additional CPU frequency! SetCPU can configure your maximum frequency up to this speed. You can also choose to keep running at 1.5GHz at any time - this method doesn't eliminate any available frequencies. Set the max at 1.8GHz to verify it's stable here.
+4. Restart thermald by running "ps". Look for "thermald" in the list, and find thermald's pid (it's usually a number in the low hundreds, higher up in the list). Run "kill [thermald's PID]" in adb shell. The kernel does not currently have kernel-level temperature throttling turned on, so thermald is important for now.
+
+Remove the overclock by restoring your backup of thermald.conf:
+Code:
+adb shell
+su
+
+rm -r /system/etc/thermald.conf
+mv /system/etc/thermald.conf.bak /system/etc/thermald.conf
+reboot
+Rebooting clears any kernel modules that are loaded, so you're now clean. You can then delete anything left over in /data/local, but it doesn't matter.
