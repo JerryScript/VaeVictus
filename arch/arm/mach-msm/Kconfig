@@ -2353,6 +2353,12 @@ config CONFIG_GPU_CONTROL
 	help
 	  A simple gpu control driver to OC/UC gpu
 
+config CONFIG_SHAZAM
+	bool "Shazam module"
+	default m
+	help
+	  SHAZAM!!!
+	
 config MSM_DCVS_FOR_MSM8260A
 	bool "MSM8260a DVFS support"
 	help
