@@ -2317,11 +2317,25 @@ static void __init msm8960_gfx_init(void)
 	uint32_t soc_platform_version = socinfo_get_version();
 	if (SOCINFO_VERSION_MAJOR(soc_platform_version) == 1) {
 		struct kgsl_device_platform_data *kgsl_3d0_pdata =
+#ifdef CONFIG_GPU_CONTROL
 				msm_kgsl_3d0.dev.platform_data;
 		kgsl_3d0_pdata->pwrlevel[0].gup_freq = 400000000;
-		kgsl_3d0_pdata->pwrlevel[1].gpu_freq = 320000000;
-		kgsl_3d0_pdata->pwrlevel[2].gpu_freq = 266667000;
-		kgsl_3d0_pdata->pwrlevel[3].gpu_freq = 27000000;
+		kgsl_3d0_pdata->pwrlevel[1].gpu_freq = 384000000;
+		kgsl_3d0_pdata->pwrlevel[2].gpu_freq = 320000000;
+		kgsl_3d0_pdata->pwrlevel[3].gpu_freq = 266667000;
+		kgsl_3d0_pdata->pwrlevel[4].gpu_freq = 196667000;
+#else
+				msm_kgsl_3d0.dev.platform_data;
+		kgsl_3d0_pdata->pwrlevel[2].gpu_freq = 320000000;
+		kgsl_3d0_pdata->pwrlevel[3].gpu_freq = 266667000;
+#endif
+	}
+}
+
+
+
+
+
 	}
 }
 
