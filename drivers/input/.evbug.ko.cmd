@@ -1,1 +1,0 @@
-cmd_drivers/input/evbug.ko := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL -r  -T /home/jerryscript/android/source/Kernel/scripts/module-common.lds --build-id  -o drivers/input/evbug.ko drivers/input/evbug.o drivers/input/evbug.mod.o

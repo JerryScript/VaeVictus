@@ -1,1 +1,0 @@
-cmd_net/wireless/cfg80211.ko := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL -r  -T /home/jerryscript/android/source/Kernel/scripts/module-common.lds --build-id  -o net/wireless/cfg80211.ko net/wireless/cfg80211.o net/wireless/cfg80211.mod.o

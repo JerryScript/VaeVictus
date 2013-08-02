@@ -1,1 +1,0 @@
-cmd_drivers/media/video/msm/actuators/built-in.o :=  /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o drivers/media/video/msm/actuators/built-in.o drivers/media/video/msm/actuators/msm_actuator.o 
