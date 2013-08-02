@@ -1,0 +1,14 @@
+ui_print("----------------------");
+ui_print("Installing VaeVictus");
+ui_print("----------------------");
+ui_print("--Mounting system...");
+mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "/system");
+show_progress(0.500000, 10);
+ui_print("--Extracting boot image...");
+package_extract_file("boot.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+show_progress(0.100000, 0);
+ui_print("--Unmounting system...");
+unmount("/system");
+ui_print("----------------------");
+ui_print("Installation complete!");
+
