@@ -2326,16 +2326,9 @@ static void __init msm8960_gfx_init(void)
 		kgsl_3d0_pdata->pwrlevel[4].gpu_freq = 196667000;
 #else
 				msm_kgsl_3d0.dev.platform_data;
-		kgsl_3d0_pdata->pwrlevel[2].gpu_freq = 320000000;
-		kgsl_3d0_pdata->pwrlevel[3].gpu_freq = 266667000;
+		kgsl_3d0_pdata->pwrlevel[0].gpu_freq = 320000000;
+		kgsl_3d0_pdata->pwrlevel[1].gpu_freq = 266667000;
 #endif
-	}
-}
-
-
-
-
-
 	}
 }
 
