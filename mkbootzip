@@ -3,16 +3,23 @@
 #Checking for zImage
 if [ -f arch/arm/boot/zImage ]
 then
-echo "Found prebuilt kernel"
-	cp zImage zip/
+	cp arch/arm/boot/zImage zip/
 else
-echo "Gotta build kernel first!!!"
 	make zImage
 fi
 echo "Making zip now"
-	cp initramfs/ zip/initramfs \
+if [ -f zip/initramfs/ ]
+then
+	echo ""
+else
+	mkdir zip/initramfs/
+fi
+	cp initramfs/* zip/initramfs/ -r \
 	cd zip/initramfs/ \
-	find . | cpio -o >initramfs.cpio
+
+	find . | cpio -o >../initramfs.cpio \
+	cd ../ \
+	gzip initramfs.cpio \
 	mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 --cmdline 'console=null androidboot.hardware=qcom user_debug=31' -o new_boot.img \
 	mv new_boot.img boot.img \
 	zip VaeVic4rmsrc.zip boot.img \
