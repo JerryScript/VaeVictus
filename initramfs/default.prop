@@ -5,3 +5,10 @@ ro.secure=0
 ro.allow.mock.location=1
 ro.debuggable=1
 persist.sys.usb.config=mtp,adb
+
+# Cant seem to find out how to
+# Add scripts to initramfs
+# So I'm going to add this here:
+compat.update.kernel.vaevic=1
+kernel.jerryscript.vaevic=1
+kernel.version.custom=vaevic-unknown-3.0.x
