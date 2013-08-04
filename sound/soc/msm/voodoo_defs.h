@@ -1,4 +1,4 @@
 /* For Voodoo Sound
 */
-#define DEVICEID TF101
+#define DEVICEID GOGH
 #define VOODOO_SOUND_VERSION 1
