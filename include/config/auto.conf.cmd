@@ -693,6 +693,7 @@ deps_config := \
 	arch/arm/mach-clps711x/Kconfig \
 	arch/arm/mach-bcmring/Kconfig \
 	arch/arm/mach-at91/Kconfig \
+	mods/Kconfig \
 	kernel/Kconfig.freezer \
 	kernel/Kconfig.locks \
 	block/Kconfig.iosched \
