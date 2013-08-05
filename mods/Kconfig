@@ -1,0 +1,34 @@
+menu "JerryScript and rbheromax's mods"
+
+config FORCE_FAST_CHARGE
+	bool "Force AC Fast charge at will"
+	default y
+	help
+	  A simple sysfs interface to force adapters that
+	  are detected as USB to charge as AC.
+
+config CONFIG_GPU_CONTROL
+	bool "GPU OC + Control"
+	default y
+	help
+	  A simple gpu control driver to OC/UC gpu
+
+config CONFIG_SHAZAM
+	bool "Shazam module"
+	default m
+	help
+	  SHAZAM!!!
+
+config MSM_CPU_MAX_CLK_1DOT2GHZ
+	bool "Our custom Overclocking Table"
+	help
+	  To support the Max 1.2Ghz MSM8960 Model reach higher freq's
+
+config VOODOO_SOUND
+	bool "Voodoo Sound"
+	default n
+	help
+	  Support for Voodoo sound enchancements
+
+
+endmenu

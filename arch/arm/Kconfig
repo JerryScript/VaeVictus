@@ -230,6 +230,8 @@ source "init/Kconfig"
 
 source "kernel/Kconfig.freezer"
 
+source "mods/Kconfig"
+
 menu "System Type"
 
 config MMU

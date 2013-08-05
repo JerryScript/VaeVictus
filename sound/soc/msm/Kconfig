@@ -137,12 +137,6 @@ config VZW_VOLUME
 	help
 	 To add support for Verizon wireless 8 level volume
 
-config VOODOO_SOUND
-	bool "Voodoo Sound"
-	default n
-	help
-	  Support for Voodoo sound enchancements
-
 config SEC_DHA_SOL_MAL
 	tristate "Samsung DHA solution"
 	default n

@@ -2335,30 +2335,6 @@ config MSM_CACHE_DUMP
 	  This allows for analysis of the caches in case cache corruption is
 	  suspected.
 
-config MSM_CPU_MAX_CLK_1DOT2GHZ
-	bool "CPU Max 1.2Ghz clk support"
-	help
-	  To support the Max 1.2Ghz MSM8960 Model.
-
-config FORCE_FAST_CHARGE
-	bool "Force AC Fast charge at will"
-	default y
-	help
-	  A simple sysfs interface to force adapters that
-	  are detected as USB to charge as AC.
-
-config CONFIG_GPU_CONTROL
-	bool "Added GPU Control driver"
-	default y
-	help
-	  A simple gpu control driver to OC/UC gpu
-
-config CONFIG_SHAZAM
-	bool "Shazam module"
-	default m
-	help
-	  SHAZAM!!!
-	
 config MSM_DCVS_FOR_MSM8260A
 	bool "MSM8260a DVFS support"
 	help
