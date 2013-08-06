@@ -833,6 +833,7 @@ static int mipi_novatek_disp_on(struct platform_device *pdev)
 	|| defined(CONFIG_FB_MSM_MIPI_NOVATEK_CMD_WVGA_PT_PANEL)
 	is_negativeMode_on();
 #endif
+
 	mfd = platform_get_drvdata(pdev);
 	if (unlikely(!mfd))
 		return -ENODEV;
