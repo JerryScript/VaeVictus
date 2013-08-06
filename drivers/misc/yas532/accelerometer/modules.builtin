@@ -1,3 +1,0 @@
-kernel/drivers/misc/yas532/accelerometer/yas_acc_kernel_driver.ko
-kernel/drivers/misc/yas532/accelerometer/yas_acc_driver-lis3dh.ko
-kernel/drivers/misc/yas532/accelerometer/yas_acc_driver-bma25x.ko

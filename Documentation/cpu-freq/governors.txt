@@ -29,6 +29,9 @@ Contents:
 2.4  Ondemand
 2.5  Conservative
 2.6  Interactive
+2.7  Badass
+2.8  Smartassv2
+2.9  Lagfree
 
 3.   The Governor Interface in the CPUfreq Core
 
@@ -250,6 +253,19 @@ CPU speeds to drop below hispeed_freq according to load as usual.
 boostpulse: Immediately boost speed of all CPUs to hispeed_freq for
 min_sample_time, after which speeds are allowed to drop below
 hispeed_freq according to load as usual.
+
+2.7 Badass
+=============================================
+
+
+2.8 Smartassv2
+=============================================
+
+
+
+2.9 Lagfree
+=============================================
+
 
 
 3. The Governor Interface in the CPUfreq Core

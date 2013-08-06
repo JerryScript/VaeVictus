@@ -12,6 +12,8 @@ obj-$(CONFIG_SND_MSM_SOC) += snd-soc-msm.o
 snd-soc-msmv2-objs := msm7kv2-dsp.o msm7kv2-pcm.o
 obj-$(CONFIG_SND_MSM7KV2_SOC) += snd-soc-msmv2.o
 
+voodoo-sound-objs := msm_voodoo_sound.o
+
 # MSM Machine Support
 snd-soc-msm7k-objs := msm7201.o
 obj-$(CONFIG_SND_MSM_SOC_MSM7K) += snd-soc-msm7k.o
@@ -37,6 +39,7 @@ obj-$(CONFIG_SND_MSM_MVS_DAI_SOC) += snd-soc-msm-mvs-dai.o
 snd-soc-msm-mvs-objs := msm-mvs.o
 obj-$(CONFIG_SND_MVS_SOC) += snd-soc-msm-mvs.o
 
+obj-$(CONFIG_TEGRA_VOODOO_SOUND)+= voodoo-sound.o
 # 8660 ALSA Support
 snd-soc-lpass-objs := lpass-i2s.o lpass-dma.o
 obj-$(CONFIG_SND_SOC_MSM8660_LPAIF) += snd-soc-lpass.o
@@ -62,6 +65,7 @@ obj-$(CONFIG_SND_SOC_VOICE) += msm-pcm-voice.o msm-pcm-voip.o
 snd-soc-qdsp6-objs += msm-pcm-lpa.o msm-pcm-afe.o
 obj-$(CONFIG_SND_SOC_QDSP6) += snd-soc-qdsp6.o
 
+obj-$(CONFIG_VOODOO) += msm_voodoo_sound.o
 ifdef CONFIG_MACH_M2_ATT
 snd-soc-msm8960-objs := msm8960-d2.o
 else ifdef CONFIG_MACH_M2_SKT

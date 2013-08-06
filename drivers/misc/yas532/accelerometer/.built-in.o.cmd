@@ -1,1 +1,0 @@
-cmd_drivers/misc/yas532/accelerometer/built-in.o :=  /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o drivers/misc/yas532/accelerometer/built-in.o drivers/misc/yas532/accelerometer/yas_acc_kernel_driver.o drivers/misc/yas532/accelerometer/yas_acc_driver-lis3dh.o drivers/misc/yas532/accelerometer/yas_acc_driver-bma25x.o 

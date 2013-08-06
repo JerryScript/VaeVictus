@@ -16,4 +16,6 @@
 .version
 .vmlinux.cmd
 .vmlinux.o.cmd
+vmlinux
+vmlinux.o
 

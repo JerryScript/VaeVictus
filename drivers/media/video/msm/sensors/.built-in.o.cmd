@@ -1,1 +1,0 @@
-cmd_drivers/media/video/msm/sensors/built-in.o :=  /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o drivers/media/video/msm/sensors/built-in.o drivers/media/video/msm/sensors/msm_sensor.o drivers/media/video/msm/sensors/isx012_v4l2.o drivers/media/video/msm/sensors/db8131m_v4l2.o 

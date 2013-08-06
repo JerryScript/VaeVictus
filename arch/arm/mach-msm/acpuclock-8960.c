@@ -72,13 +72,17 @@
 
 #define HFPLL_NOMINAL_VDD	1050000
 #define HFPLL_LOW_VDD		 850000
-#define HFPLL_LOW_VDD_PLL_L_MAX	0x28
+#define HFPLL_LOW_VDD_PLL_L_MAX	0x44
 
 #define SECCLKAGD		BIT(4)
 
 /* PTE EFUSE register. */
 #define QFPROM_PTE_ROW0_MSB	(MSM_QFPROM_BASE + 0x00BC)
 #define QFPROM_PTE_ROW1_LSB	(MSM_QFPROM_BASE + 0x00C0)
+
+/* Set MIN/MAX CPU_FREQ */
+#define CONFIG_MSM_CPU_FREQ_MAX   1836000
+#define CONFIG_MSM_CPU_FREQ_MIN    384000
 
 enum scalables {
 	CPU0 = 0,
@@ -490,14 +494,22 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
 	{ 1, {  1134000, HFPLL, 1, 0, 0x2A }, L2(16), 1175000 },
 	{ 1, {  1188000, HFPLL, 1, 0, 0x2C }, L2(16), 1200000 },
 #if 0
+#endif
 	/* This part is commented out only to MSM8960(1.2GHz) model */
+	/* Not anymore */
 	{ 1, {  1242000, HFPLL, 1, 0, 0x2E }, L2(16), 1200000 },
 	{ 0, {  1296000, HFPLL, 1, 0, 0x30 }, L2(16), 1225000 },
 	{ 1, {  1350000, HFPLL, 1, 0, 0x32 }, L2(16), 1225000 },
 	{ 0, {  1404000, HFPLL, 1, 0, 0x34 }, L2(16), 1237500 },
 	{ 1, {  1458000, HFPLL, 1, 0, 0x36 }, L2(16), 1237500 },
 	{ 1, {  1512000, HFPLL, 1, 0, 0x38 }, L2(16), 1250000 },
-#endif
+	// OC starts here
+	{ 0, {  1566000, HFPLL, 1, 0, 0x3A }, L2(16), 1250000 },
+        { 1, {  1620000, HFPLL, 1, 0, 0x3C }, L2(16), 1275000 },        
+        { 0, {  1674000, HFPLL, 1, 0, 0x3E }, L2(16), 1275000 },
+	{ 1, {  1728000, HFPLL, 1, 0, 0x40 }, L2(19), 1295000 },
+	{ 1, {	1782000, HFPLL, 1, 0, 0x42 }, L2(19), 1295000 },
+	{ 1, { 	1836000, HFPLL, 1, 0, 0x44 }, L2(19), 1300000 },
 	{ 0, { 0 } }
 };
 
@@ -520,14 +532,22 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
 	{ 1, {  1134000, HFPLL, 1, 0, 0x2A }, L2(16), 1125000 },
 	{ 1, {  1188000, HFPLL, 1, 0, 0x2C }, L2(16), 1150000 },
 #if 0
+#endif
 	/* This part is commented out only to MSM8960(1.2GHz) model */
+	/* Not anymore */
 	{ 1, {  1242000, HFPLL, 1, 0, 0x2E }, L2(16), 1150000 },
 	{ 0, {  1296000, HFPLL, 1, 0, 0x30 }, L2(16), 1175000 },
 	{ 1, {  1350000, HFPLL, 1, 0, 0x32 }, L2(16), 1175000 },
 	{ 0, {  1404000, HFPLL, 1, 0, 0x34 }, L2(16), 1187500 },
 	{ 1, {  1458000, HFPLL, 1, 0, 0x36 }, L2(16), 1187500 },
 	{ 1, {  1512000, HFPLL, 1, 0, 0x38 }, L2(16), 1200000 },
-#endif
+	// OC starts here
+	{ 0, {  1566000, HFPLL, 1, 0, 0x3A }, L2(16), 1250000 },
+        { 1, {  1620000, HFPLL, 1, 0, 0x3C }, L2(16), 1275000 },        
+        { 0, {  1674000, HFPLL, 1, 0, 0x3E }, L2(16), 1275000 },
+	{ 1, {  1728000, HFPLL, 1, 0, 0x40 }, L2(19), 1295000 },
+	{ 1, {	1782000, HFPLL, 1, 0, 0x42 }, L2(19), 1295000 },
+	{ 1, { 	1836000, HFPLL, 1, 0, 0x44 }, L2(19), 1300000 },
 	{ 0, { 0 } }
 };
 
@@ -550,14 +570,22 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
 	{ 1, {  1134000, HFPLL, 1, 0, 0x2A }, L2(16), 1075000 },
 	{ 1, {  1188000, HFPLL, 1, 0, 0x2C }, L2(16), 1100000 },
 #if 0
+#endif
 	/* This part is commented out only to MSM8960(1.2GHz) model */
+	/* Not anymore */
 	{ 1, {  1242000, HFPLL, 1, 0, 0x2E }, L2(16), 1100000 },
 	{ 0, {  1296000, HFPLL, 1, 0, 0x30 }, L2(16), 1125000 },
 	{ 1, {  1350000, HFPLL, 1, 0, 0x32 }, L2(16), 1125000 },
 	{ 0, {  1404000, HFPLL, 1, 0, 0x34 }, L2(16), 1137500 },
 	{ 1, {  1458000, HFPLL, 1, 0, 0x36 }, L2(16), 1137500 },
 	{ 1, {  1512000, HFPLL, 1, 0, 0x38 }, L2(16), 1150000 },
-#endif
+	// OC starts here
+	{ 0, {  1566000, HFPLL, 1, 0, 0x3A }, L2(16), 1175000 },
+        { 1, {  1620000, HFPLL, 1, 0, 0x3C }, L2(16), 1200000 },        
+        { 0, {  1674000, HFPLL, 1, 0, 0x3E }, L2(16), 1225000 },
+	{ 1, {  1728000, HFPLL, 1, 0, 0x40 }, L2(19), 1255000 },
+	{ 1, {	1782000, HFPLL, 1, 0, 0x42 }, L2(19), 1280000 },
+	{ 1, { 	1836000, HFPLL, 1, 0, 0x44 }, L2(19), 1300000 },
 	{ 0, { 0 } }
 };
 
@@ -580,13 +608,20 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_f3[] = {
 	{ 1, {  1134000, HFPLL, 1, 0, 0x2A }, L2(16), 1050000 },
 	{ 0, {  1188000, HFPLL, 1, 0, 0x2C }, L2(16), 1075000 },
 #if 0
+#endif
 	{ 1, {  1242000, HFPLL, 1, 0, 0x2E }, L2(16), 1075000 },
 	{ 0, {  1296000, HFPLL, 1, 0, 0x30 }, L2(16), 1100000 },
 	{ 1, {  1350000, HFPLL, 1, 0, 0x32 }, L2(16), 1100000 },
 	{ 0, {  1404000, HFPLL, 1, 0, 0x34 }, L2(16), 1112500 },
 	{ 1, {  1458000, HFPLL, 1, 0, 0x36 }, L2(16), 1112500 },
 	{ 1, {  1512000, HFPLL, 1, 0, 0x38 }, L2(16), 1125000 },
-#endif
+	// OC starts here
+	{ 0, {  1566000, HFPLL, 1, 0, 0x3A }, L2(16), 1175000 },
+        { 1, {  1620000, HFPLL, 1, 0, 0x3C }, L2(16), 1200000 },        
+        { 0, {  1674000, HFPLL, 1, 0, 0x3E }, L2(16), 1225000 },
+	{ 1, {  1728000, HFPLL, 1, 0, 0x40 }, L2(19), 1255000 },
+	{ 1, {	1782000, HFPLL, 1, 0, 0x42 }, L2(19), 1280000 },
+	{ 1, { 	1836000, HFPLL, 1, 0, 0x44 }, L2(19), 1300000 },
 	{ 0, { 0 } }
 };
 #elif defined(CONFIG_MSM_DCVS_FOR_MSM8260A)

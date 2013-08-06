@@ -15,6 +15,9 @@
 #include <linux/cpufreq.h>
 #include <linux/init.h>
 
+#define FREQ_AWAKE_MIN             (786000)
+#define FREQ_SLEEP_MAX             (480000)
+
 static int cpufreq_governor_powersave(struct cpufreq_policy *policy,
 					unsigned int event)
 {

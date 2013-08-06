@@ -1,1 +1,0 @@
-cmd_drivers/misc/yas532/built-in.o :=  /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o drivers/misc/yas532/built-in.o drivers/misc/yas532/accelerometer/built-in.o drivers/misc/yas532/geomagnetic/built-in.o drivers/misc/yas532/orientation/built-in.o 

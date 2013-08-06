@@ -1,1 +1,0 @@
-cmd_drivers/spi/spidev.ko := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL -r  -T /home/jerryscript/android/source/Kernel/scripts/module-common.lds --build-id  -o drivers/spi/spidev.ko drivers/spi/spidev.o drivers/spi/spidev.mod.o

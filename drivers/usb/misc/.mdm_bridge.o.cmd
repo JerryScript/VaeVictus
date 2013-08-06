@@ -1,1 +1,0 @@
-cmd_drivers/usb/misc/mdm_bridge.o := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o drivers/usb/misc/mdm_bridge.o drivers/usb/misc/mdm_ctrl_bridge.o drivers/usb/misc/mdm_data_bridge.o 

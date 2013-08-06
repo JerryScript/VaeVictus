@@ -1,1 +1,0 @@
-cmd_arch/arm/mach-msm/board-8064-all.o := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL    -r -o arch/arm/mach-msm/board-8064-all.o arch/arm/mach-msm/board-8064.o arch/arm/mach-msm/board-8064-pmic.o arch/arm/mach-msm/board-8064-storage.o arch/arm/mach-msm/board-8064-gpiomux.o arch/arm/mach-msm/board-8064-camera.o 

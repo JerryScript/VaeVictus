@@ -1,1 +1,0 @@
-cmd_drivers/interceptor/vpnclient.ko := /home/jerryscript/android/arm-eabi-4.6/bin/arm-eabi-ld -EL -r  -T /home/jerryscript/android/source/Kernel/scripts/module-common.lds --build-id  -o drivers/interceptor/vpnclient.ko drivers/interceptor/vpnclient.o drivers/interceptor/vpnclient.mod.o

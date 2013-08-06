@@ -346,14 +346,14 @@ static inline unsigned int cpufreq_quick_get(unsigned int cpu)
 
 
 #ifdef CONFIG_SEC_DVFS
-#define TOUCH_BOOSTER_FIRST_FREQ_LIMIT 1134000
-#define TOUCH_BOOSTER_SECOND_FREQ_LIMIT 810000
+#define TOUCH_BOOSTER_FIRST_FREQ_LIMIT 1836000
+#define TOUCH_BOOSTER_SECOND_FREQ_LIMIT 1458000
 #define TOUCH_BOOSTER_FREQ_LIMIT 486000
 
 #define LOW_MAX_FREQ_LIMIT 1188000
 
 #define MIN_FREQ_LIMIT 384000
-#define MAX_FREQ_LIMIT 1512000
+#define MAX_FREQ_LIMIT 1890000
 
 enum {
 	SET_MIN = 0,
@@ -444,6 +444,15 @@ extern struct cpufreq_governor cpufreq_gov_conservative;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE)
 extern struct cpufreq_governor cpufreq_gov_interactive;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_BADASS)
+extern struct cpufreq_governor cpufreq_gov_badass;
+#define CPUFREQ_DEFAULT_GOVERNOR  (&cpufreq_gov_badass)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SMARTASS2)
+extern struct cpufreq_governor cpufreq_gov_smartass2;
+#define CPUFREQ_DEFAULT_GOVERNOR  (&cpufreq_gov_smartass2)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_LAGFREE)
+extern struct cpufreq_governor cpufreq_gov_lagfree;
+#define CPUFREQ_DEFAULT_GOVERNOR  (&cpufreq_gov_lagfree)
 #endif
 
 
