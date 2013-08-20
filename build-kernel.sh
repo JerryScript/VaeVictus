@@ -1,5 +1,10 @@
 #/bin/sh 
 
+#
+export dl-toolchains="git clone git://github.com/rbheromax/toolchains"
+export set="export CROSS_COMPILE=toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-"
+export J=$(cat /proc/cpuinfo | grep "^processor" | wc -l)
+
 echo "Preparing to build VaeVictus"
 echo " a kernel for the SPH-L300 goghvmu"
 echo " Virgin Mobile Galaxy Victory"
@@ -26,7 +31,16 @@ sudo chmod a+x -R *
 echo " "
 echo "Beginning actual build..."
 echo " "
-make ARCH=arm CROSS_COMPILE=~/Android/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi- -j20
+while true; do
+	read -p "Do you have a toolchain?"
+	case $yn in
+		[Yy]* ) break;;
+		[Nn]* ) $dl-toolchains; $set; break;;
+		*) echo "Gimme an answer dammit!!!"
+	esac
+done
+
+make ARCH=arm -j$(J)
 
 echo " "
 if [ -f arch/arm/boot/zImage ]
@@ -37,3 +51,5 @@ echo "grab /Kernel/arch/arm/boot/zImage"
 else echo "There was an error, try again."
 echo " "
 fi
+
+build/script.sh
