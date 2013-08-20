@@ -4,16 +4,10 @@ echo "Preparing to build VaeVictus"
 echo " a kernel for the SPH-L300 goghvmu"
 echo " Virgin Mobile Galaxy Victory"
 echo " "
-echo "Setting environment variables..."
-echo " "
-export ARCH=arm
-export SUBARCH=arm
-export CROSS_COMPILE=~/android/arm-eabi-4.6/bin/arm-eabi-
 
 echo " "
-echo "Running make clean and make mrproper..."
+echo "Running make mrproper..."
 echo " "
-make clean
 make mrproper
 
 echo " "
@@ -25,18 +19,21 @@ make oldconfig
 echo " "
 echo "Repairing filesystem..."
 echo " "
-sudo chown -R jerryscript:jerryscript ~/android/source/Kernel
-sudo chmod a+x -R ~/anrdoid/source/Kernel
+export user=$(whoami)
+sudo chown -R $user:$user *
+sudo chmod a+x -R *
 
 echo " "
 echo "Beginning actual build..."
 echo " "
-make ARCH=arm SUBARCH=arm CROSS_COMPILE=~/android/arm-eabi-4.6/bin/arm-eabi- -j4
+make ARCH=arm CROSS_COMPILE=~/Android/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi- -j20
 
 echo " "
+if [ -f arch/arm/boot/zImage ]
+then
 echo "Build complete."
 echo " "
-echo "If there were no errors, grab /Kernel/arch/arm/boot/zImage"
+echo "grab /Kernel/arch/arm/boot/zImage"
+else echo "There was an error, try again."
 echo " "
-
-
+fi
