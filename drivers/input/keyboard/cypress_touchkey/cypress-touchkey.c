@@ -810,6 +810,38 @@ static DEVICE_ATTR(autocal_stat, S_IRUGO | S_IWUSR | S_IWGRP,
 static DEVICE_ATTR(touchkey_brightness_level, S_IRUGO | S_IWUSR | S_IWGRP,
 				brightness_level_show, brightness_control);
 
+#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN)
+static ssize_t touchkey_bln_control(struct device *dev,
+				  struct device_attribute *attr,
+				  const char *buf, size_t size)
+{
+	struct cypress_touchkey_info *info = dev_get_drvdata(dev);
+
+	int data = 0;
+	sscanf(buf, "%d\n", &data);
+	dev_dbg(&info->client->dev, "called %s , data : %d\n", __func__, data);
+
+	if (data == 1 && info->is_powering_on && !bln_is_on) {
+		bln_is_on = 1;
+		info->is_powering_on = false;
+
+		info->power_onoff(1);
+		if (info->pdata->gpio_led_en)
+			cypress_touchkey_con_hw(info, true);
+
+		msleep(100);
+		cypress_touchkey_led_on(info);
+		enable_irq(info->irq);
+	}
+	return size;
+}
+
+static DEVICE_ATTR(touchkey_bln_enable,
+		S_IRUGO | S_IWUSR | S_IWGRP,
+		NULL, touchkey_bln_control);
+#endif
+
+
 
 static int __devinit cypress_touchkey_probe(struct i2c_client *client,
 				  const struct i2c_device_id *id)
@@ -960,6 +992,16 @@ static int __devinit cypress_touchkey_probe(struct i2c_client *client,
 		pr_err("Failed to create device(sec_touchkey)!\n");
 		goto err_sysfs;
 	}
+	
+#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN)
+	if (device_create_file(sec_touchkey,
+		&dev_attr_touchkey_bln_enable) < 0) {
+		printk(KERN_ERR "Failed to create device file(%s)!\n",
+		dev_attr_touchkey_bln_enable.attr.name);
+		goto err_sysfs;
+	}
+#endif
+	
 	dev_set_drvdata(sec_touchkey, info);
 
 	if (device_create_file(sec_touchkey,
@@ -1127,6 +1169,9 @@ static int cypress_touchkey_resume(struct device *dev)
 	struct i2c_client *client = to_i2c_client(dev);
 	struct cypress_touchkey_info *info = i2c_get_clientdata(client);
 	int ret = 0;
+	#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN)
+	}
+	#endif
 	info->power_onoff(1);
 	cypress_touchkey_con_hw(info, true);
 	msleep(100);
@@ -1138,7 +1183,9 @@ static int cypress_touchkey_resume(struct device *dev)
 	}
 
 	enable_irq(info->irq);
-
+	#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN)
+	}
+	#endif
 	return ret;
 }
 #endif
