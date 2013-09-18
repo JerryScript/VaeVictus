@@ -19,3 +19,9 @@ config KEYBOARD_CYPRESS_TOUCH_236
 	  cypress touchkey.
           To compile this driver as a
 	  module, choose M here.
+
+config KEYBOARD_CYPRESS_TOUCH_BLN
+	bool "Cypress touchkey BLN support
+	default n
+	help
+	  foobar

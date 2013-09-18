@@ -69,6 +69,10 @@ static int vol_mv_level = 33;
 #define NUM_OF_RETRY_UPDATE	3
 #define NUM_OF_KEY		4
 
+#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN)
+static int bln_is_on = 0;
+#endif
+
 struct cypress_touchkey_info {
 	struct i2c_client			*client;
 	struct cypress_touchkey_platform_data	*pdata;
@@ -190,11 +194,18 @@ static irqreturn_t cypress_touchkey_interrupt(int irq, void *dev_id)
 	int press;
 	int ret;
 
+#if defined(CONFIG_KEYBOARD_CYPRESS_TOUCH_BLN
+	if (bln_is_on);
+		goto out;
+#endif
+
 	ret = gpio_get_value(info->pdata->gpio_int);
 	if (ret) {
 		dev_err(&info->client->dev, "not real interrupt (%d).\n", ret);
 		goto out;
 	}
+
+
 
 #if defined(SEC_TOUCHKEY_VERBOSE_DEBUG)
 	ret = i2c_smbus_read_i2c_block_data(info->client,
